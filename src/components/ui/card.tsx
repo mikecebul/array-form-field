@@ -33,6 +33,14 @@ const CardDescription: React.FC<
   <p className={cn('text-sm text-muted-foreground', className)} ref={ref} {...props} />
 )
 
+const CardDescriptionDiv = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <div className={cn('text-sm text-muted-foreground', className)} ref={ref} {...props} />
+))
+CardDescriptionDiv.displayName = 'CardDescriptionDiv'
+
 const CardContent: React.FC<
   { ref?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ref, ...props }) => (
@@ -45,4 +53,4 @@ const CardFooter: React.FC<
   <div className={cn('flex items-center p-6 pt-0', className)} ref={ref} {...props} />
 )
 
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
+export { Card, CardContent, CardDescription, CardDescriptionDiv, CardFooter, CardHeader, CardTitle }

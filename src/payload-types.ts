@@ -665,6 +665,80 @@ export interface Form {
             blockName?: string | null;
             blockType: 'textarea';
           }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'datePicker';
+          }
+        | {
+            name: string;
+            label: string;
+            labelSingular: string;
+            width?: number | null;
+            minRows: number;
+            maxRows: number;
+            fields?:
+              | (
+                  | {
+                      name: string;
+                      label?: string | null;
+                      width?: number | null;
+                      defaultValue?: string | null;
+                      required?: boolean | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'text';
+                    }
+                  | {
+                      name: string;
+                      label?: string | null;
+                      width?: number | null;
+                      defaultValue?: string | null;
+                      required?: boolean | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'textarea';
+                    }
+                  | {
+                      name: string;
+                      label?: string | null;
+                      width?: number | null;
+                      defaultValue?: number | null;
+                      required?: boolean | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'number';
+                    }
+                  | {
+                      name: string;
+                      label?: string | null;
+                      width?: number | null;
+                      required?: boolean | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'email';
+                    }
+                  | {
+                      name: string;
+                      label?: string | null;
+                      width?: number | null;
+                      defaultValue?: string | null;
+                      required?: boolean | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'datePicker';
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'array';
+          }
       )[]
     | null;
   submitButtonLabel?: string | null;
@@ -1395,6 +1469,87 @@ export interface FormsSelect<T extends boolean = true> {
               width?: T;
               defaultValue?: T;
               required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        datePicker?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              defaultValue?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        array?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              labelSingular?: T;
+              width?: T;
+              minRows?: T;
+              maxRows?: T;
+              fields?:
+                | T
+                | {
+                    text?:
+                      | T
+                      | {
+                          name?: T;
+                          label?: T;
+                          width?: T;
+                          defaultValue?: T;
+                          required?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    textarea?:
+                      | T
+                      | {
+                          name?: T;
+                          label?: T;
+                          width?: T;
+                          defaultValue?: T;
+                          required?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    number?:
+                      | T
+                      | {
+                          name?: T;
+                          label?: T;
+                          width?: T;
+                          defaultValue?: T;
+                          required?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    email?:
+                      | T
+                      | {
+                          name?: T;
+                          label?: T;
+                          width?: T;
+                          required?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    datePicker?:
+                      | T
+                      | {
+                          name?: T;
+                          label?: T;
+                          width?: T;
+                          defaultValue?: T;
+                          required?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
               id?: T;
               blockName?: T;
             };
