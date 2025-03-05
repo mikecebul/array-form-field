@@ -52,21 +52,20 @@ export const FormBlock: React.FC<
       const submitForm = async () => {
         setError(undefined)
 
-        const dataToSend = Object.entries(data).map(([name, value]) => ({
-          field: name,
-          value,
-        }))
-
         // delay loading indicator by 1s
         loadingTimerID = setTimeout(() => {
           setIsLoading(true)
         }, 1000)
 
         try {
+          // @ts-expect-error
+          const title = data.email ? data.email : new Date().toISOString()
+
           const req = await fetch(`${getClientSideURL()}/api/form-submissions`, {
             body: JSON.stringify({
+              title,
               form: formID,
-              submissionData: dataToSend,
+              submissionData: data,
             }),
             headers: {
               'Content-Type': 'application/json',

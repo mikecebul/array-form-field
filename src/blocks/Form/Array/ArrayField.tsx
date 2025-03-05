@@ -25,7 +25,7 @@ interface ArrayFieldsProps {
 type FieldComponentType = ArrayEntryField['blockType']
 
 const fieldComponents: Record<FieldComponentType, React.ComponentType<any>> = {
-  datePicker: DatePicker, // Make sure this matches the block slug exactly
+  datePicker: DatePicker,
   textarea: Textarea,
 } as const
 
@@ -42,7 +42,6 @@ export const ArrayField: React.FC<ArrayFieldsProps> = ({
   currentRows,
 }) => {
   const renderField = (fieldItem: ArrayEntryField, fieldIndex: number) => {
-    console.log('Rendering field:', fieldItem.blockType, fieldComponents[fieldItem.blockType]) // Add debug log
     const Field = fieldComponents[fieldItem.blockType]
 
     if (Field) {
@@ -59,8 +58,6 @@ export const ArrayField: React.FC<ArrayFieldsProps> = ({
           register={register}
         />
       )
-    } else {
-      console.log('No matching component found for:', fieldItem.blockType) // Add debug log
     }
     return null
   }

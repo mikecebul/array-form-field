@@ -83,6 +83,26 @@ export const plugins: Plugin[] = [
         })
       },
     },
+    formSubmissionOverrides: {
+      admin: {
+        useAsTitle: 'title',
+      },
+      fields: ({ defaultFields }) => {
+        const formField = defaultFields.find((field) => 'name' in field && field.name === 'form')
+
+        return [
+          ...(formField ? [formField] : []),
+          {
+            name: 'title',
+            type: 'text',
+          },
+          {
+            name: 'submissionData',
+            type: 'json',
+          },
+        ]
+      },
+    },
   }),
   searchPlugin({
     collections: ['posts'],

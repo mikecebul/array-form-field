@@ -832,12 +832,15 @@ export interface Redirect {
 export interface FormSubmission {
   id: string;
   form: string | Form;
+  title?: string | null;
   submissionData?:
     | {
-        field: string;
-        value: string;
-        id?: string | null;
-      }[]
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
     | null;
   updatedAt: string;
   createdAt: string;
@@ -1583,13 +1586,8 @@ export interface FormsSelect<T extends boolean = true> {
  */
 export interface FormSubmissionsSelect<T extends boolean = true> {
   form?: T;
-  submissionData?:
-    | T
-    | {
-        field?: T;
-        value?: T;
-        id?: T;
-      };
+  title?: T;
+  submissionData?: T;
   updatedAt?: T;
   createdAt?: T;
 }
